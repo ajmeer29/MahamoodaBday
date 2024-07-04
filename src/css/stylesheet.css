@@ -1,5 +1,5 @@
 body {
-	/*background-color: #FFDAB9;	*/
+	/* background-color: #F6A6BB;	 */
 	background-color: #000;
 	-webkit-transition:background-color linear 5s;
 	-moz-transition:background-color linear 5s;
@@ -12,7 +12,7 @@ body {
 	display: none;
 }
 .peach {
-	background-color: #FFDAB9;
+	background-color: #F6A6BB;
 	
 }
 .peach-after {
@@ -25,90 +25,90 @@ body {
 
 @-webkit-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #F4BBC9;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #F7D1D8;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 }
 @-moz-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #F4BBC9;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #F7D1D8;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 }
 
 @-o-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #F4BBC9;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #F7D1D8;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 }
 
 @-ms-keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #F4BBC9;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #F7D1D8;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 }
 
 @keyframes peach_alive {
 	0%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	25%{
-		background-color: #FFE4B5;
+		background-color: #F4BBC9;
 	}
 	50%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 	75%{
-		background-color: #FFEFD5;
+		background-color: #F7D1D8;
 	}
 	100%{
-		background-color: #FFDAB9;
+		background-color: #F6A6BB;
 	}
 }
 
@@ -1595,8 +1595,9 @@ body {
 	bottom: 0;
 	padding:10px 0px 10px 0px;
 }
-#turn_on,#picture_time,#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#dj_time,#story, #banner, #invite_friends, #self ,#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,#f9,#f10,#f11,#f12, #cake_pink, #card, #candle{
+#turn_on,#picture_time,#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#dj_time,#story, #banner, #self ,#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,#f9,#f10,#f11,#f12, #cake_pink, #card, #candle{
 	display: none;
+	/* #invite_friends, */
 }
 
 .cake-cover {
@@ -1650,8 +1651,24 @@ body {
     	}
     }*/
 
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+/* @import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower'); */
+
+@font-face {
+	font-family: Blantick;
+	src: url(../fonts/blantick_script/Blantick\ Script.ttf);
+}
+
+@font-face {
+	font-family: Lobster;
+	src: url(../fonts/Lobster\ 1.4.otf);
+}
+
+@font-face {
+	font-family: Indie;
+	src: url(../fonts/IndieFlower.ttf);
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -1709,7 +1726,8 @@ body {
 
 #card h1 {
   text-align: center;
-  font-family: 'Lobster', cursive;
+  /* font-family: "Blantick"; */
+  font-family: "Lobster";
   font-style: italic;
   font-size: 70px;
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.15), 1px 1px 0 #ffc8c8, 2px 2px 0 #ff9696, 3px 3px 0 #ff7d7d;
@@ -1735,7 +1753,7 @@ p:first-child {
 p.signed {
   margin-top: 1.5em;
   text-align: center;
-font-family: 'Indie Flower', cursive;
+font-family: 'Indie';
   font-size: 1.5em;
 }
 
@@ -1781,7 +1799,7 @@ font-family: 'Indie Flower', cursive;
   right: -12px;
   background: #F44;
   color: #FFF;
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster';
   font-style: italic;
   font-weight: bold;
   font-size: 1.5em;
@@ -1827,7 +1845,7 @@ font-family: 'Indie Flower', cursive;
 
 #card.open-fully #card-front,
 #card.close-half #card-front {
-  background: #FFEFEF;
+  background: #ff7d7d;
 }
 
 #card.open-fully #card-front {
@@ -1842,7 +1860,7 @@ font-family: 'Indie Flower', cursive;
 footer {
   max-width: 500px;
   margin: 40px auto;
-font-family: 'Lobster', cursive;
+font-family: 'Lobster';
   font-size: 14px;
   line-height: 1.6;
   color: #888;
@@ -1985,7 +2003,7 @@ font-family: 'Lobster', cursive;
 }
 .text {
   color: #8b6a60;
-  font-family: 'Lobster', cursive;
+  font-family: 'Lobster';
   font-weight: 300;
   font-style: italic;
   text-align: center;
