@@ -4,9 +4,13 @@ $(window).load(function(){
 });
 $('document').ready(function(){
 		var vw;
+		function setCelebrationStep(step, message) {
+			$('#celebration-step').text(message);
+			$('#progress-fill').css('width', ((step / 9) * 100) + '%');
+		}
+
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
-			$('#card *').hide();
 			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
 			$('#b11').animate({top:240, left: vw-350},500);
 			$('#b22').animate({top:240, left: vw-250},500);
@@ -19,12 +23,14 @@ $('document').ready(function(){
 
 
 	$('#initial').click(function(){
+		setCelebrationStep(1, "Let's get the celebration started.");
 		$(this).fadeOut('slow').delay(50).promise().done(function(){
 			$('#turn_on').fadeIn('slow');
 		});
 	});
 
 	$('#play').click(function(){
+		setCelebrationStep(3, "A little music makes it feel like a party.");
 		// changeColor();
 		var audio = $('.song')[0];
         audio.play();
@@ -42,6 +48,7 @@ $('document').ready(function(){
 	});
 
 	$('#turn_on').click(function(){
+		setCelebrationStep(2, "Let there be light.");
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
 		$('#bulb_red').addClass('bulb-glow-red');
 		$('#bulb_blue').addClass('bulb-glow-blue');
@@ -50,12 +57,14 @@ $('document').ready(function(){
 		$('#bulb_orange').addClass('bulb-glow-orange');
 		$('body').addClass('peach');
 		$("#welcome_dance").remove();
+		$('.welcome-copy').fadeOut('slow');
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
 			$('#play').fadeIn('slow');
 		});
 	});
 
 	$('#bannar_coming').click(function(){
+		setCelebrationStep(4, "Making the room a little more festive.");
 		$('#banner').css("display", "block");
 		$('.bannar').addClass('center');
 		$('.bannar').addClass('bannar-come');
@@ -116,6 +125,7 @@ $('document').ready(function(){
 	}
 
 	$('#balloons_flying').click(function(){
+		setCelebrationStep(5, "Sending birthday wishes up with the balloons.");
 		$('.balloon-border').animate({top:-500},8000);
 		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
 		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
@@ -195,6 +205,7 @@ $('document').ready(function(){
 	// });	
 
 	$('#cake_fadein').click(function(){
+		setCelebrationStep(6, "Time for something sweet.");
 		$('#cake_pink').css("display", "block");
 		$('#candle').css("display", "block");
 
@@ -208,6 +219,7 @@ $('document').ready(function(){
  
 		
 	$('#dj_time').click(function(){
+		setCelebrationStep(7, "Let's celebrate!");
 		var audio = $('.song')[0];
         audio.pause();
 
@@ -260,6 +272,7 @@ $('document').ready(function(){
 	});
 	
 	$('#story').click(function(){
+		setCelebrationStep(8, "A birthday message, just for you.");
 		// var audio1 = $('.song1')[0];
   //       audio1.pause();
 
@@ -283,6 +296,7 @@ $('document').ready(function(){
 	});
 
 	$('#picture_time').click(function(){
+		setCelebrationStep(9, "A few special moments to finish.");
 		window.location.replace("src/html/surprise.html")
 		
 	});

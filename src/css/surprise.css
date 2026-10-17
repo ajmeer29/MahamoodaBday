@@ -1,0 +1,307 @@
+:root {
+  color-scheme: light;
+  --ink: #392d35;
+  --muted: #71636a;
+  --rose: #9f5267;
+  --rose-deep: #77384d;
+  --cream: #fffaf5;
+  --panel: rgba(255, 250, 245, 0.94);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background-color: #392d35;
+  background-image:
+    linear-gradient(145deg, rgba(34, 23, 30, 0.54), rgba(34, 23, 30, 0.68)),
+    url("../../images/humans/together/newcollege.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.fireflies {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.surprise {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  place-items: center;
+  padding: max(1.25rem, env(safe-area-inset-top)) max(1.25rem, env(safe-area-inset-right)) max(1.25rem, env(safe-area-inset-bottom)) max(1.25rem, env(safe-area-inset-left));
+}
+
+.back-link {
+  position: absolute;
+  top: max(1.5rem, env(safe-area-inset-top));
+  left: max(1.5rem, env(safe-area-inset-left));
+  padding: 0.65rem 1rem;
+  border: 1px solid rgba(255, 250, 245, 0.44);
+  border-radius: 999px;
+  background: rgba(43, 29, 37, 0.26);
+  color: #fffaf5;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  border-color: rgba(255, 250, 245, 0.8);
+  background: rgba(43, 29, 37, 0.54);
+}
+
+.birthday-card {
+  width: min(100%, 690px);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: clamp(1.4rem, 4vw, 2.2rem);
+  background: var(--panel);
+  box-shadow: 0 28px 90px rgba(22, 13, 19, 0.34);
+  text-align: center;
+  backdrop-filter: blur(18px);
+}
+
+.eyebrow {
+  margin: 0 0 clamp(1.2rem, 3.5vw, 2rem);
+  color: var(--rose-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.4rem, 2vw, 1.1rem);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(5.5rem, 20vw, 10.5rem);
+  font-weight: 400;
+  letter-spacing: -0.085em;
+  line-height: 0.9;
+}
+
+.portrait {
+  display: block;
+  flex: 0 0 auto;
+  width: clamp(5.6rem, 19vw, 9.2rem);
+  height: clamp(5.6rem, 19vw, 9.2rem);
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(70, 36, 48, 0.22);
+  object-fit: cover;
+}
+
+#birthday-title {
+  margin: clamp(1.5rem, 4vw, 2.25rem) 0 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 5.6vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.12;
+}
+
+#birthday-title span {
+  color: var(--rose);
+}
+
+.birthday-note {
+  max-width: 30rem;
+  margin: 0.9rem auto 0;
+  color: var(--muted);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.4rem, 4vw, 2rem);
+}
+
+.music-toggle {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  background: var(--rose);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.music-toggle:hover {
+  background: var(--rose-deep);
+  transform: translateY(-1px);
+}
+
+.music-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.home-link {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid rgba(119, 56, 77, 0.28);
+  border-radius: 999px;
+  color: var(--rose-deep);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+  border-color: var(--rose);
+  background: rgba(159, 82, 103, 0.08);
+}
+
+.music-status {
+  min-height: 1.35em;
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #d497aa;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .surprise {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .back-link {
+    top: max(1rem, env(safe-area-inset-top));
+    left: max(1rem, env(safe-area-inset-left));
+  }
+
+  .birthday-card {
+    padding: 2rem 1.25rem 1.35rem;
+  }
+
+  .year {
+    font-size: clamp(5rem, 22vw, 7rem);
+  }
+
+  .portrait {
+    width: clamp(5.1rem, 21vw, 6.4rem);
+    height: clamp(5.1rem, 21vw, 6.4rem);
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .music-toggle,
+  .home-link {
+    width: 100%;
+  }
+}
+
+@media (max-height: 620px) and (min-width: 481px) {
+  .surprise {
+    padding-top: 4.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .birthday-card {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .year {
+    font-size: clamp(5rem, 22vh, 8rem);
+  }
+
+  .portrait {
+    width: clamp(4.5rem, 18vh, 6.5rem);
+    height: clamp(4.5rem, 18vh, 6.5rem);
+  }
+
+  #birthday-title {
+    margin-top: 1rem;
+    font-size: clamp(1.8rem, 6vh, 2.8rem);
+  }
+
+  .birthday-note {
+    margin-top: 0.5rem;
+  }
+
+  .card-actions {
+    margin-top: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fireflies {
+    display: none;
+  }
+}

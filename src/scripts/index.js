@@ -7,7 +7,6 @@
       openB = $('open'),
       closeB = $('close'),
       timer = null;
-  console.log('wat', card);
   openB.addEventListener('click', function () {
     card.setAttribute('class', 'open-half');
     if (timer) clearTimeout(timer);
@@ -19,7 +18,7 @@
 
   closeB.addEventListener('click', function () {
     card.setAttribute('class', 'close-half');
-    if (timer) clearTimerout(timer);
+    if (timer) clearTimeout(timer);
     timer = setTimeout(function () {
       card.setAttribute('class', '');
       timer = null;

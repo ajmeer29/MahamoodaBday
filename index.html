@@ -17,7 +17,7 @@
     <link rel="icon" href="images/others/favicon.ico" type="image/x-icon" />
     <meta property="og:description" content="Wish you a very Happy Birthday">
     <!-- End of Facebook Meta Tags -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
@@ -31,19 +31,19 @@
 	<link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
 	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
 	<!-- <link rel="stylesheet/less" href="src/css/cake.less"> -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+	<link rel="stylesheet" href="src/css/redesign.css">
 </head>
 
 <body id ="bodyy">
 	<div class="loading"></div>
 	<audio class="song" controls loop>
-        <source src="audio/HBD-Piano.mp3"></source>
+        <source src="audio/HBD-Piano.mp3" type="audio/mpeg">
 	   Your browser isn't invited for super fun audio time.
     </audio>
 
     <audio class="song1" controls loop>
-        <source src="audio/Produce.mp3"></source>
-		<source src="audio/Produce.wav"></source>
+        <source src="audio/Produce.mp3" type="audio/mpeg">
+		<source src="audio/Produce.wav" type="audio/wav">
 	   Your browser isn't invited for super fun audio time.
     </audio>
 
@@ -69,8 +69,8 @@
     	<h3 style="color:#20CFB4;">A</h3>
     </div>
 
-    <img src="images/ballons/Balloon-Border.png" width="100%" class="balloon-border">
-    <img src="images/others/cute-dancing.gif" id = "welcome_dance" alt="dancing step"  class = "center1" width=250/>
+    <img src="images/ballons/Balloon-Border.png" width="100%" class="balloon-border" alt="">
+    <img src="images/others/cute-dancing.gif" id="welcome_dance" alt="" class="center1" width="250">
 
     <!-- <img src="images/humans/self.png" width="100%" class="self-border" id ="self">
 
@@ -90,7 +90,7 @@
 
 
 
-    <img src="images/others/cake.png" width="100%" class="cake_class" id ="cake_pink">
+    <img src="images/others/cake.png" width="100%" class="cake_class" id="cake_pink" alt="">
 
     <div class="row cake-cover" id ="candle">
 			<div class="col-md-12 text-center">
@@ -112,7 +112,12 @@
  
 
 	<div class="container">
-		
+		<section class="welcome-copy" aria-labelledby="welcome-title">
+			<p class="welcome-eyebrow">A little celebration, made with love</p>
+			<h1 id="welcome-title">Happy Birthday, Mahamooda</h1>
+			<p>Today is all about you. There’s a little surprise waiting—let’s make it special.</p>
+		</section>
+
 		<div class="row">
 			<div class="col-md-2 col-xs-2 bulb-holder">
 				<div class="bulb" id="bulb_yellow"></div>
@@ -144,16 +149,18 @@
 		<div class="navbar navbar-fixed-bottom">
 			<div class="row">
 				<div class="col-md-6 text-center col-md-offset-3">
-					<button class="btn btn-primary" id="initial">Welcome to Mahamooda's BirthDay Party</button>
-					<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
-					<button class="btn btn-primary" id="play">Play Music</button>
-					<button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
-					<button class="btn btn-primary" id="balloons_flying">Fly the Balloons</button>
+					<p class="celebration-step" id="celebration-step" aria-live="polite">Your celebration is ready when you are.</p>
+					<div class="celebration-progress" aria-hidden="true"><span id="progress-fill"></span></div>
+					<button class="btn btn-primary" id="initial" type="button">Start the celebration</button>
+					<button class="btn btn-primary" id="turn_on" type="button">Turn on the lights</button>
+					<button class="btn btn-primary" id="play" type="button">Play birthday music</button>
+					<button class="btn btn-primary" id="bannar_coming" type="button">Decorate the room</button>
+					<button class="btn btn-primary" id="balloons_flying" type="button">Send the balloons</button>
 					<!-- <button class="btn btn-primary" id="invite_friends">Lets start the Party</button> -->
-					<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
-					<button class="btn btn-primary" id="dj_time">DJ Time</button>
-					<button class="btn btn-primary" id="story">A Message for you</button>
-					<button class="btn btn-primary" id="picture_time">Special Moments</button>
+					<button class="btn btn-primary" id="cake_fadein" type="button">Bring out the cake</button>
+					<button class="btn btn-primary" id="dj_time" type="button">Start the party</button>
+					<button class="btn btn-primary" id="story" type="button">Open your birthday card</button>
+					<button class="btn btn-primary" id="picture_time" type="button">See our special moments</button>
 				</div>
 			</div>
 			
@@ -164,15 +171,16 @@
 	<div id="card">
 <div id="card-inside">
 <div class="wrap">
-<center><p style="font-size:3vw" class="animated infinite wobble"><b><u>Happy Birthday Mahamooda!</b></u></p><center>
+<center><p style="font-size:3vw"><b><u>Happy Birthday Mahamooda!</b></u></p><center>
 <p style="font-size:1vw;" > Hey Mahamooda, Today is a very special and beautiful day. So let's make it the best celebration with all your friends and family. &nbsp;<i class="em-svg em-blush"></i></p>
 <p style="font-size:1vw;"> Happy Birthday, Habibiti. I made all this as a birthday present for you. I wish the best for you, and thanks for being there for me, for the friendship we made, and for everything. <br>
 	Enjoy every single moment that you experience today, fill it with your most beautiful smile, and make it the best memory. </p><p style="font-size:3vw;" class="signed"><u>Made With </b><b> <i class="em-svg em-heart"></i></p>
 </div>
+<button id="close" type="button" aria-label="Close birthday card">Close card</button>
 </div>
 <div id="card-front">
 <div class="wrap">
-<h1 style="font-size:5vw;" class="animated infinite swing"> HBD Mahamooda!</h1>
+<h1 style="font-size:5vw;"> HBD Mahamooda!</h1>
 <div class="cake_and_velas">
 <div class="velas">
 <div class="fuego"></div>
@@ -185,7 +193,6 @@
 </div>
 </div>
 <button id="open" data-balloon="Click to Open Card!" data-balloon-length="medium" data-balloon-pos="left" data-balloon-visible>&gt;</button>
-<button id="close" data-balloon="Close" data-balloon-length="medium" data-balloon-pos="left" data-balloon-visible>&lt;</button>
 <div class="card-front_inside">
 <br> <br> <br>
 <div class="polaroid">
@@ -196,7 +203,6 @@
 </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script  src="src/scripts/index.js"></script>
 <script src="src/scripts/effect.js"></script>
