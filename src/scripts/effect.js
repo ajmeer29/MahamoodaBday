@@ -1,316 +1,248 @@
-$(window).load(function(){
-	$('.loading').fadeOut('fast');
-	$('.container').fadeIn('fast');
-});
-$('document').ready(function(){
-		var vw;
-		function setCelebrationStep(step, message) {
-			$('#celebration-step').text(message);
-			$('#progress-fill').css('width', ((step / 9) * 100) + '%');
-		}
+(function () {
+  var birthdaySong = document.getElementById("birthday-song");
+  var partySong = document.getElementById("party-song");
+  var musicButton = document.getElementById("play");
+  var musicStatus = document.getElementById("music-status");
+  var balloons = Array.prototype.slice.call(document.querySelectorAll(".balloons"));
+  var balloonBorder = document.querySelector(".balloon-border");
+  var cake = document.getElementById("cake_pink");
+  var banner = document.getElementById("banner");
+  var card = document.getElementById("card");
+  var currentSong = birthdaySong;
+  var currentSongName = "birthday";
+  var startedBirthdayMusic = false;
+  var playbackAttempt = 0;
+  var colors = ["yellow", "red", "blue", "green", "pink", "orange"];
 
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:240, left: vw-350},500);
-			$('#b22').animate({top:240, left: vw-250},500);
-			$('#b33').animate({top:240, left: vw-150},500);
-			$('#b44').animate({top:240, left: vw-50},500);
-			$('#b55').animate({top:240, left: vw+50},500);
-			$('#b66').animate({top:240, left: vw+150},500);
-			$('#b77').animate({top:240, left: vw+250},500);
-		});
+  function byId(id) {
+    return document.getElementById(id);
+  }
 
+  function setCelebrationStep(step, message) {
+    byId("celebration-step").textContent = message;
+    byId("progress-fill").style.width = ((step / 9) * 100) + "%";
+  }
 
-	$('#initial').click(function(){
-		setCelebrationStep(1, "Let's get the celebration started.");
-		$(this).fadeOut('slow').delay(50).promise().done(function(){
-			$('#turn_on').fadeIn('slow');
-		});
-	});
+  function schedule(callback, delay) {
+    window.setTimeout(callback, delay);
+  }
 
-	$('#play').click(function(){
-		setCelebrationStep(3, "A little music makes it feel like a party.");
-		// changeColor();
-		var audio = $('.song')[0];
-        audio.play();
-        $('#bulb_yellow').addClass('bulb-glow-yellow-after');
-		$('#bulb_red').addClass('bulb-glow-red-after');
-		$('#bulb_blue').addClass('bulb-glow-blue-after');
-		$('#bulb_green').addClass('bulb-glow-green-after');
-		$('#bulb_pink').addClass('bulb-glow-pink-after');
-		$('#bulb_orange').addClass('bulb-glow-orange-after');
-		$('body').css('backgroud-color','#FFF');
-		$('body').addClass('peach-after');
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#bannar_coming').fadeIn('slow');
-		});
-	});
+  function show(element) {
+    element.disabled = false;
+    element.style.display = "block";
+    element.classList.remove("is-hiding");
+    window.requestAnimationFrame(function () {
+      element.classList.add("is-visible");
+    });
+  }
 
-	$('#turn_on').click(function(){
-		setCelebrationStep(2, "Let there be light.");
-		$('#bulb_yellow').addClass('bulb-glow-yellow');
-		$('#bulb_red').addClass('bulb-glow-red');
-		$('#bulb_blue').addClass('bulb-glow-blue');
-		$('#bulb_green').addClass('bulb-glow-green');
-		$('#bulb_pink').addClass('bulb-glow-pink');
-		$('#bulb_orange').addClass('bulb-glow-orange');
-		$('body').addClass('peach');
-		$("#welcome_dance").remove();
-		$('.welcome-copy').fadeOut('slow');
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#play').fadeIn('slow');
-		});
-	});
+  function hide(element) {
+    element.disabled = true;
+    element.classList.remove("is-visible");
+    element.classList.add("is-hiding");
+    window.setTimeout(function () {
+      element.style.display = "none";
+      element.classList.remove("is-hiding");
+    }, 300);
+  }
 
-	$('#bannar_coming').click(function(){
-		setCelebrationStep(4, "Making the room a little more festive.");
-		$('#banner').css("display", "block");
-		$('.bannar').addClass('center');
-		$('.bannar').addClass('bannar-come');
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#balloons_flying').fadeIn('slow');
-		});
-	});
+  function addLightEffect(suffix) {
+    colors.forEach(function (color) {
+      byId("bulb_" + color).classList.add("bulb-glow-" + color + suffix);
+    });
+  }
 
-	function loopOne() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b1').animate({left:randleft,bottom:randtop},8000,function(){
-			loopOne();
-		});
-	}
-	function loopTwo() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b2').animate({left:randleft,bottom:randtop},8000,function(){
-			loopTwo();
-		});
-	}
-	function loopThree() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b3').animate({left:randleft,bottom:randtop},8000,function(){
-			loopThree();
-		});
-	}
-	function loopFour() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b4').animate({left:randleft,bottom:randtop},8000,function(){
-			loopFour();
-		});
-	}
-	function loopFive() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b5').animate({left:randleft,bottom:randtop},8000,function(){
-			loopFive();
-		});
-	}
+  function updateMusicControl(isPlaying) {
+    musicButton.setAttribute("aria-pressed", String(isPlaying));
+    musicButton.textContent = isPlaying
+      ? "Pause " + (currentSongName === "party" ? "party music" : "birthday music")
+      : (currentSongName === "party" ? "Play party music" : "Play birthday music");
+  }
 
-	function loopSix() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b6').animate({left:randleft,bottom:randtop},8000,function(){
-			loopSix();
-		});
-	}
-	function loopSeven() {
-		var randleft = Math.floor((Math.random() * $(window).width()) + 1);
-		var randtop =  Math.floor((Math.random() * $(window).height()) + 1);
-		$('#b7').animate({left:randleft,bottom:randtop},8000,function(){
-			loopSeven();
-		});
-	}
+  function reportMusicError() {
+    musicStatus.textContent = "Music couldn't be played. Please check the audio file and try again.";
+    updateMusicControl(false);
+  }
 
-	$('#balloons_flying').click(function(){
-		setCelebrationStep(5, "Sending birthday wishes up with the balloons.");
-		$('.balloon-border').animate({top:-500},8000);
-		$('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
-		$('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b3').addClass('balloons-rotate-behaviour-two');
-		// $('#b4').addClass('balloons-rotate-behaviour-one');
-		// $('#b5').addClass('balloons-rotate-behaviour-one');
-		// $('#b6').addClass('balloons-rotate-behaviour-two');
-		// $('#b7').addClass('balloons-rotate-behaviour-one');
-		loopOne();
-		loopTwo();
-		loopThree();
-		loopFour();
-		loopFive();
-		loopSix();
-		loopSeven();
-		
-		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			$('#cake_fadein').fadeIn('slow');
-		});
-	});	
+  function startSong(song, name) {
+    playbackAttempt += 1;
+    var attempt = playbackAttempt;
+    birthdaySong.pause();
+    partySong.pause();
+    currentSong = song;
+    currentSongName = name;
+    musicStatus.textContent = "";
+    updateMusicControl(false);
 
-	// $('#invite_friends').click(function(){
-	// 	 vw = $(window).width()/2;
-	// 	 mid = $(window).height()/2;
+    var playback;
+    try {
+      playback = song.play();
+    } catch (error) {
+      reportMusicError();
+      return;
+    }
 
-	// 	 mid_diff = mid/12;
-	// 	 vw_diff = vw/12;
-	// 	$('#self').css({"display": "block", "bottom":'0px',"left":vw+'px'});
-	// 	$('#self').animate({top:mid-mid_diff*4,left:vw},3000);
+    if (playback && typeof playback.catch === "function") {
+      playback.catch(function () {
+        if (attempt === playbackAttempt && song === currentSong) {
+          reportMusicError();
+        }
+      });
+    }
+  }
 
-	// 	$('#f1').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f1').animate({top:mid-mid_diff*3,left:vw-vw_diff*3},3000);
+  [birthdaySong, partySong].forEach(function (song) {
+    song.addEventListener("play", function () {
+      if (song === currentSong) {
+        musicStatus.textContent = "";
+        updateMusicControl(true);
+      }
+    });
+    song.addEventListener("pause", function () {
+      if (song === currentSong) {
+        updateMusicControl(false);
+      }
+    });
+    song.addEventListener("error", function () {
+      if (song === currentSong && musicButton.getAttribute("aria-pressed") === "true") {
+        reportMusicError();
+      }
+    });
+  });
 
+  musicButton.addEventListener("click", function () {
+    if (!currentSong.paused) {
+      playbackAttempt += 1;
+      currentSong.pause();
+      return;
+    }
 
-	// 	$('#f2').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f2').animate({top:mid-mid_diff*3,left:vw+vw_diff*3},3000);
+    startSong(currentSong, currentSongName);
+    if (!startedBirthdayMusic) {
+      startedBirthdayMusic = true;
+      setCelebrationStep(3, "A little music makes it feel like a party.");
+      addLightEffect("-after");
+      document.body.classList.add("peach-after");
+      schedule(function () {
+        show(byId("bannar_coming"));
+      }, 5000);
+    }
+  });
 
+  byId("initial").addEventListener("click", function () {
+    setCelebrationStep(1, "Let's get the celebration started.");
+    hide(this);
+    schedule(function () {
+      show(byId("turn_on"));
+    }, 50);
+  });
 
-	// 	$('#f3').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f3').animate({top:mid-mid_diff*2,left:vw-vw_diff*4},3000);
+  byId("turn_on").addEventListener("click", function () {
+    setCelebrationStep(2, "Let there be light.");
+    addLightEffect("");
+    document.body.classList.add("peach");
+    var dance = byId("welcome_dance");
+    dance.classList.add("is-fading");
+    window.setTimeout(function () {
+      dance.remove();
+    }, 400);
+    byId("welcome-title").closest(".welcome-copy").classList.add("is-fading");
+    hide(this);
+    schedule(function () {
+      show(musicButton);
+    }, 5000);
+  });
 
-	// 	$('#f4').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f4').animate({top:mid-mid_diff*2,left:vw+vw_diff*4},3000);
+  byId("bannar_coming").addEventListener("click", function () {
+    setCelebrationStep(4, "Making the room a little more festive.");
+    banner.style.display = "block";
+    banner.classList.add("center", "bannar-come");
+    hide(this);
+    schedule(function () {
+      show(byId("balloons_flying"));
+    }, 5000);
+  });
 
-	// 	$('#f5').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f5').animate({top:mid-mid_diff,left:vw+vw_diff*5},3000);
+  function startBalloons() {
+    if (balloonBorder) {
+      balloonBorder.classList.add("is-rising");
+    }
 
-	// 	$('#f6').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f6').animate({top:mid-mid_diff,left:vw-vw_diff*5},3000);
+    balloons.forEach(function (balloon, index) {
+      var horizontalPosition = 7 + Math.random() * 86;
+      balloon.style.left = horizontalPosition + "%";
+      balloon.style.setProperty("--balloon-duration", (10 + Math.random() * 4) + "s");
+      balloon.style.setProperty("--balloon-delay", (index * 0.28) + "s");
+      balloon.style.setProperty("--balloon-drift-mid", (Math.round((Math.random() - 0.5) * 90)) + "px");
+      balloon.style.setProperty("--balloon-drift-end", (Math.round((Math.random() - 0.5) * 120)) + "px");
+      balloon.style.setProperty("--balloon-still-top", (6 + Math.random() * 18) + "vh");
+      balloon.classList.add("is-flying");
+    });
+  }
 
-	// 	$('#f7').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f7').animate({top:mid,left:vw-vw_diff*6},3000);
+  byId("balloons_flying").addEventListener("click", function () {
+    setCelebrationStep(5, "Sending birthday wishes up with the balloons.");
+    startBalloons();
+    hide(this);
+    schedule(function () {
+      show(byId("cake_fadein"));
+    }, 5000);
+  });
 
+  byId("cake_fadein").addEventListener("click", function () {
+    setCelebrationStep(6, "Time for something sweet.");
+    cake.style.display = "block";
+    window.requestAnimationFrame(function () {
+      cake.classList.add("is-revealed");
+    });
+    hide(this);
+    schedule(function () {
+      show(byId("dj_time"));
+    }, 3000);
+  });
 
-	// 	$('#f8').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f8').animate({top:mid,left:vw+vw_diff*6},3000);
+  function gatherBalloonsForParty() {
+    var positions = [8, 22, 36, 50, 64, 78, 92];
+    balloons.forEach(function (balloon, index) {
+      balloon.classList.remove("is-flying");
+      balloon.style.left = positions[index] + "%";
+      balloon.classList.add("is-party-banner");
+    });
+  }
 
+  byId("dj_time").addEventListener("click", function () {
+    setCelebrationStep(7, "Let's celebrate!");
+    startSong(partySong, "party");
+    document.body.classList.add("peach-disco");
+    addLightEffect("-disco");
+    gatherBalloonsForParty();
+    hide(this);
+    schedule(function () {
+      show(byId("story"));
+    }, 3000);
+  });
 
-	// 	$('#f9').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f9').animate({top:mid+mid_diff*3,left:vw+vw_diff*2},3000);
+  byId("story").addEventListener("click", function () {
+    setCelebrationStep(8, "A birthday message, just for you.");
+    hide(this);
+    card.style.display = "block";
+    card.style.position = "fixed";
+    card.style.zIndex = "10060";
+    card.setAttribute("aria-hidden", "false");
+    byId("open").focus();
+    schedule(function () {
+      show(byId("picture_time"));
+    }, 3000);
+  });
 
-	// 	$('#f10').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f10').animate({top:mid+mid_diff,left:vw-vw_diff*7},3000);
+  byId("picture_time").addEventListener("click", function () {
+    setCelebrationStep(9, "A few special moments to finish.");
+    window.location.assign("src/html/surprise.html");
+  });
 
+  window.addEventListener("load", function () {
+    var loading = document.querySelector(".loading");
+    loading.classList.add("is-hidden");
+  });
 
-	// 	$('#f11').css({"display": "block", "top":500*Math.random()+'px',"right":'0px'});
-	// 	$('#f11').animate({top:mid+mid_diff,left:vw+vw_diff*7},3000);
-
-
-	// 	$('#f12').css({"display": "block", "top":500*Math.random()+'px',"left":'0px'});
-	// 	$('#f12').animate({top:mid+mid_diff*3,left:vw-vw_diff*4},3000);
-
-
-	// 	$(this).fadeOut('slow').delay(5000).promise().done(function(){
-	// 		$('#cake_fadein').fadeIn('slow');
-	// 	});
-	// });	
-
-	$('#cake_fadein').click(function(){
-		setCelebrationStep(6, "Time for something sweet.");
-		$('#cake_pink').css("display", "block");
-		$('#candle').css("display", "block");
-
-		$('#cake_pink').fadeIn('slow');
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#dj_time').fadeIn('slow');
-		});
-	});
-
-	
- 
-		
-	$('#dj_time').click(function(){
-		setCelebrationStep(7, "Let's celebrate!");
-		var audio = $('.song')[0];
-        audio.pause();
-
-        var audio1 = $('.song1')[0];
-        audio1.play();
-		$('body').addClass('peach-disco');
-		$('#f1').addClass('dance-one')
-		$('#f3').addClass('dance-two')
-		$('#f2').addClass('dance-one')
-		$('#f4').addClass('dance-two')
-		$('#f5').addClass('dance-one')
-		$('#f6').addClass('dance-one')
-		$('#f7').addClass('dance-two')
-		$('#f8').addClass('dance-two')
-		$('#f11').addClass('dance-two')
-		 $('#f12').addClass('dance-two')
-		$('#self').addClass('dance-one')
-		 $('#f9').addClass('dance-one')
-		$('#f10').addClass('dance-one')
-		
-		$('#bulb_yellow').addClass('bulb-glow-yellow-disco');
-		$('#bulb_red').addClass('bulb-glow-red-disco');
-		$('#bulb_blue').addClass('bulb-glow-blue-disco');
-		$('#bulb_green').addClass('bulb-glow-green-disco');
-		$('#bulb_pink').addClass('bulb-glow-pink-disco');
-		$('#bulb_orange').addClass('bulb-glow-orange-disco');
-		 vw = $(window).width()/2;
-		 count=7
-
-		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-		$('#b1').attr('id','b11');
-		$('#b2').attr('id','b22')
-		$('#b3').attr('id','b33')
-		$('#b4').attr('id','b44')
-		$('#b5').attr('id','b55')	
-		$('#b6').attr('id','b66')
-		$('#b7').attr('id','b77')
-		$('#b11').animate({top:240, left: 0},500);
-		$('#b22').animate({top:240, left: vw-vw*2/3},500);
-		$('#b33').animate({top:240, left: vw-vw/3},500);
-		$('#b44').animate({top:240, left: vw},500);
-		$('#b55').animate({top:240, left: vw+vw/3},500);
-		$('#b66').animate({top:240, left: vw+vw*2/3},500);
-		$('#b77').animate({top:240, left: 2*vw},500);
-		$('.balloons').css('opacity','0.9');
-		$('.balloons h2').fadeIn(3000);
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#story').fadeIn('slow');
-		});
-	});
-	
-	$('#story').click(function(){
-		setCelebrationStep(8, "A birthday message, just for you.");
-		// var audio1 = $('.song1')[0];
-  //       audio1.pause();
-
-  //       var audio2 = $('.song')[0];
-  //       audio2.play();
-		$(this).fadeOut('slow');
-		$('#card').css("display", "block");
-		$('#card').show();
-		$('#card').css('position', 'fixed');
-		$('#card').css('z-index', 9999);
-		$('#card').attr('aria-hidden', 'false');
-		$('#open').trigger('focus');
-		$('.cake').fadeOut('fast').promise().done(function(){
-			$('.message').fadeIn('slow');
-		});
-		$('#card').fadeIn('slow');
-
-		$(this).fadeOut('slow').delay(3000).promise().done(function(){
-			$('#picture_time').fadeIn('slow');
-		});
-	
-		
-	});
-
-	$('#picture_time').click(function(){
-		setCelebrationStep(9, "A few special moments to finish.");
-		window.location.replace("src/html/surprise.html")
-		
-	});
-});
-
-
-
-
-
-  
-   
- 
-
-
-//alert('hello');
+}());

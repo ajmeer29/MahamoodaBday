@@ -1,11 +1,11 @@
 (function() {
-  function $(id) {
+  function byId(id) {
     return document.getElementById(id);
   }
 
-  var card = $('card'),
-      openB = $('open'),
-      closeB = $('close'),
+  var card = byId('card'),
+      openB = byId('open'),
+      closeB = byId('close'),
       timer = null;
   openB.addEventListener('click', function () {
     card.setAttribute('class', 'open-half');
