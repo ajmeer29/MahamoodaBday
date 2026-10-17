@@ -450,3 +450,376 @@ body.peach-after {
     transition-duration: 0.01ms !important;
   }
 }
+
+#card {
+  position: fixed !important;
+  top: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: 50% !important;
+  width: min(90vw, 760px);
+  height: min(78vh, 640px);
+  height: min(78dvh, 640px);
+  min-height: 420px;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  transform-style: preserve-3d;
+  perspective: 1800px;
+}
+
+#card::before {
+  position: fixed;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(43, 29, 37, 0.48);
+  content: "";
+  transform: translate(-50%, -50%);
+}
+
+#card-front,
+#card-inside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(119, 56, 77, 0.15);
+  border-radius: 1.5rem;
+  backface-visibility: hidden;
+}
+
+#card-inside {
+  z-index: 1;
+  overflow: auto;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(212, 151, 170, 0.13), transparent 38%),
+    #fffaf5;
+  box-shadow: 0 30px 90px rgba(43, 29, 37, 0.28);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1rem, 1.45vw, 1.12rem);
+  line-height: 1.75;
+}
+
+#card-inside .wrap {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4.75rem);
+}
+
+#card-inside .wrap p {
+  max-width: 38rem;
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  font-size: inherit;
+}
+
+#card-inside .wrap .card-kicker,
+#card-front .card-kicker {
+  margin: 0 0 0.9rem;
+  color: var(--rose-dark);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+#card-inside .wrap .card-message-title {
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+#card-front {
+  z-index: 2;
+  background: #f6e4e3;
+  box-shadow: 0 30px 90px rgba(43, 29, 37, 0.28);
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+#card-front .wrap {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.75rem);
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.55), transparent 45%),
+    linear-gradient(145deg, #fff9f4 0%, #f6e4e3 100%);
+  text-align: center;
+}
+
+#card-front::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0.65rem;
+  border: 1px solid rgba(119, 56, 77, 0.15);
+  border-radius: 1.05rem;
+  background: transparent;
+  content: "";
+  pointer-events: none;
+}
+
+#card-front .wrap > * {
+  position: relative;
+  z-index: 2;
+}
+
+#card-front h1 {
+  max-width: 100%;
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 3.8rem) !important;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+}
+
+#card-front .card-kicker {
+  margin-bottom: 0.75rem;
+}
+
+#card-front .card-front-note {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+#card.open-half #card-front,
+#card.close-half #card-front {
+  transform: rotateY(-90deg);
+}
+
+#card.open-fully #card-front {
+  z-index: 2;
+  background: #f6e4e3;
+  transform: rotateY(-180deg);
+}
+
+#card.open-fully #card-inside {
+  z-index: 3;
+}
+
+#card-front button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  background: var(--rose-dark);
+  color: #fff;
+  cursor: pointer;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+#card-front #open {
+  position: absolute;
+  right: auto;
+  bottom: 1.5rem;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+#card-front button:hover,
+#card-front button:focus {
+  background: #5f2c3e;
+}
+
+#card-front button:hover {
+  transform: translateY(-1px);
+}
+
+#card-front #open:hover {
+  transform: translate(-50%, -1px);
+}
+
+#card-front .cake_and_velas {
+  position: relative;
+  inset: auto;
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 4.5rem;
+  overflow: hidden;
+  background-image: url("../../images/others/cake.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#card-front .cake_and_velas #cake,
+#card-front .cake_and_velas .velas {
+  display: none;
+}
+
+#card-front #cake {
+  width: auto;
+  max-width: min(45vw, 180px);
+  height: min(32vh, 230px);
+  margin: 0 auto;
+}
+
+#card-front .velas {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#card-front .card-front_inside {
+  display: none;
+}
+
+#card-inside #close {
+  position: absolute;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
+  border: 1px solid rgba(119, 56, 77, 0.25);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--rose-dark);
+  cursor: pointer;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+#card-inside #close:hover,
+#card-inside #close:focus {
+  border-color: var(--rose);
+  background: #f8eceb;
+}
+
+#card-inside .wrap .signed {
+  margin-top: 0.75rem;
+  color: var(--rose-dark);
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.card-heart {
+  display: inline-block;
+  margin-left: 0.25rem;
+  color: var(--rose);
+}
+
+@media (max-width: 600px) {
+  #card {
+    width: min(92vw, 640px);
+    height: min(80vh, 640px);
+    height: min(80dvh, 640px);
+    min-height: min(390px, calc(100dvh - 2rem));
+  }
+
+  #card-front,
+  #card-inside {
+    border-radius: 1.2rem;
+  }
+
+  #card-inside .wrap {
+    justify-content: flex-start;
+    padding: 2rem 1.5rem 5.25rem;
+  }
+
+  #card-inside .wrap .card-message-title {
+    margin-bottom: 1rem;
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  #card-inside .wrap p {
+    margin-bottom: 0.9rem;
+    font-size: 0.96rem;
+  }
+
+  #card-front .wrap {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  #card-front h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+  }
+
+  #card-front .card-kicker {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  #card-front #cake {
+    max-width: 42vw;
+    height: min(31vh, 190px);
+  }
+
+  #card-inside #close {
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+@media (max-height: 620px) {
+  #card {
+    height: 76vh;
+    height: 76dvh;
+    min-height: min(340px, calc(100dvh - 2rem));
+  }
+
+  #card-inside .wrap {
+    padding-top: 1.5rem;
+    justify-content: flex-start;
+  }
+
+  #card-inside .wrap p {
+    margin-bottom: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  #card-inside .wrap .signed {
+    margin-top: 0.25rem;
+  }
+
+  #card-front .wrap {
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  #card-front #cake {
+    height: min(24vh, 145px);
+  }
+}

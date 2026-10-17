@@ -281,8 +281,10 @@ $('document').ready(function(){
 		$(this).fadeOut('slow');
 		$('#card').css("display", "block");
 		$('#card').show();
-		$('#card').css('position', 'absolute');
+		$('#card').css('position', 'fixed');
 		$('#card').css('z-index', 9999);
+		$('#card').attr('aria-hidden', 'false');
+		$('#open').trigger('focus');
 		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
 		});
